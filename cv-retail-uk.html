@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CV | Muhammad Qasim</title>
+    <meta name="description" content="Professional CV of Muhammad Qasim for retail and logistics positions.">
+    <style>
+        /* Professional UK CV Format - Clean & Organized */
+        :root {
+            --text: #2c3e50;
+            --muted: #7f8c8d;
+            --accent: #3498db;
+            --border: #bdc3c7;
+            --section-bg: #f8f9fa;
+            --highlight: #ecf0f1;
+        }
+
+        html, body {
+            padding: 0;
+            margin: 0;
+            color: var(--text);
+            background: #ffffff;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 25mm;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        header {
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 20px;
+            background: var(--highlight);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 28px;
+            line-height: 1.2;
+            margin: 0 0 8px 0;
+            font-weight: bold;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .headline {
+            color: var(--accent);
+            margin: 0 0 15px 0;
+            font-weight: 500;
+            font-size: 16px;
+            font-style: normal;
+        }
+
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            color: var(--muted);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .contact li { 
+            margin: 0;
+            font-size: 13px;
+            padding: 5px 10px;
+            background: white;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .contact a { 
+            color: inherit; 
+            text-decoration: none; 
+        }
+        .contact a:hover { 
+            color: var(--accent); 
+        }
+
+        h2 {
+            font-size: 18px;
+            text-transform: uppercase;
+            margin: 30px 0 15px 0;
+            padding: 10px 0;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .summary {
+            color: var(--text);
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.7;
+            text-align: justify;
+            background: var(--section-bg);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .skill-category {
+            background: var(--section-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skill-list li {
+            margin: 8px 0;
+            font-size: 13px;
+            padding: 5px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .skill-list li:before {
+            content: "✓ ";
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .item {
+            margin: 10px 0;
+        }
+
+        .item-header {
+            margin-bottom: 5px;
+        }
+
+        .role {
+            font-weight: bold;
+            font-size: 11pt;
+            color: var(--text);
+        }
+
+        .org {
+            color: var(--muted);
+            margin-top: 2px;
+            font-size: 10pt;
+            font-style: italic;
+        }
+
+        .meta {
+            color: var(--muted);
+            font-weight: normal;
+            font-size: 10pt;
+            float: right;
+        }
+
+        .bullets {
+            margin: 5px 0 0 20px;
+        }
+
+        .bullets li {
+            margin: 3px 0;
+            font-size: 10pt;
+        }
+
+        .tags {
+            margin: 5px 0 0 0;
+            color: var(--muted);
+            font-size: 9pt;
+            font-style: italic;
+        }
+
+        .link { 
+            color: var(--accent); 
+            text-decoration: none; 
+        }
+        .link:hover { 
+            text-decoration: underline; 
+        }
+
+        .availability {
+            border: 1px solid var(--border);
+            padding: 10px;
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        .availability h3 {
+            margin: 0 0 5px 0;
+            color: var(--text);
+            font-size: 11pt;
+            font-weight: bold;
+        }
+
+        .availability p {
+            margin: 0;
+            font-size: 10pt;
+            color: var(--text);
+        }
+
+        @media print {
+            @page { 
+                margin: 15mm; 
+                size: A4;
+            }
+            body { 
+                font-size: 12px; 
+                line-height: 1.4;
+            }
+            .page { 
+                max-width: none; 
+                margin: 0; 
+                padding: 0; 
+            }
+            header { 
+                border-bottom: 2px solid #000; 
+                break-inside: avoid; 
+            }
+            a { 
+                color: inherit; 
+                text-decoration: none; 
+            }
+            h2 { 
+                border-bottom: 1px solid #000; 
+                break-after: avoid; 
+            }
+            .item { 
+                break-inside: avoid; 
+                background: #f9f9f9;
+                border-left: 3px solid #000;
+            }
+            .skill-category {
+                background: #f9f9f9;
+                border-left: 3px solid #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page" role="main">
+        <header>
+            <h1>MUHAMMAD QASIM</h1>
+            <p class="headline">Retail & Logistics Professional with Technical Background</p>
+            <ul class="contact" aria-label="Contact">
+                <li><a href="https://maps.google.com/?q=Flat+118B,+London+Road,+Slough,+SL3+7HS,+United+Kingdom" target="_blank" rel="noopener">Flat 118B, London Road, Slough, SL3 7HS, United Kingdom</a></li>
+                <li><a href="tel:+447880055333" rel="nofollow">+44 7880 055333</a></li>
+                <li><a href="mailto:qasimdogar077@gmail.com" rel="nofollow">qasimdogar077@gmail.com</a></li>
+            </ul>
+        </header>
+
+        <div class="availability">
+            <h3>Immediate Availability</h3>
+            <p>Available for full-time, part-time, and flexible working arrangements. Open to shift work including evenings and weekends.</p>
+        </div>
+
+        <section id="summary" class="section" aria-labelledby="summary-title">
+            <h2 id="summary-title">Professional Summary</h2>
+            <p class="summary">
+                Experienced professional with 4+ years in software development and system management, now seeking opportunities in retail, 
+                warehouse operations, and customer service. Strong technical background provides excellent problem-solving skills and attention 
+                to detail. Proven ability to work efficiently in fast-paced environments, manage inventory systems, and provide excellent 
+                customer service. Adaptable team player with strong communication skills and a commitment to maintaining high standards of 
+                work quality and customer satisfaction.
+            </p>
+        </section>
+
+        <section id="skills" class="section" aria-labelledby="skills-title">
+            <h2 id="skills-title">Key Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Retail & Customer Service</h3>
+                    <ul class="skill-list">
+                        <li>Customer Service Excellence</li>
+                        <li>Cash Handling & POS Systems</li>
+                        <li>Inventory Management</li>
+                        <li>Stock Control & Merchandising</li>
+                        <li>Sales & Upselling</li>
+                        <li>Problem Resolution</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Warehouse & Logistics</h3>
+                    <ul class="skill-list">
+                        <li>Inventory Tracking Systems</li>
+                        <li>Order Processing</li>
+                        <li>Stock Picking & Packing</li>
+                        <li>Quality Control</li>
+                        <li>Health & Safety Compliance</li>
+                        <li>Forklift Operations (Willing to train)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <ul class="skill-list">
+                        <li>Computer Systems & Software</li>
+                        <li>Database Management</li>
+                        <li>System Troubleshooting</li>
+                        <li>Microsoft Office Suite</li>
+                        <li>ERP Systems Experience</li>
+                        <li>Quick Learner</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Personal Attributes</h3>
+                    <ul class="skill-list">
+                        <li>Reliable & Punctual</li>
+                        <li>Team Player</li>
+                        <li>Attention to Detail</li>
+                        <li>Multitasking</li>
+                        <li>Time Management</li>
+                        <li>Adaptable</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section" aria-labelledby="experience-title">
+            <h2 id="experience-title">Professional Experience</h2>
+
+            <article class="item" aria-labelledby="exp-1-title">
+                <div class="item-header">
+                    <div>
+                        <div id="exp-1-title" class="role">Software Developer & System Analyst</div>
+                        <div class="org">ITempire Software House · Faisalabad, Pakistan</div>
+                    </div>
+                    <div class="meta">March 2023 – September 2025</div>
+                </div>
+                <ul class="bullets">
+                    <li>Developed and maintained inventory management systems for retail and warehouse operations</li>
+                    <li>Created point-of-sale (POS) systems with real-time stock tracking and reporting</li>
+                    <li>Managed customer data and order processing systems</li>
+                    <li>Provided technical support and training to end-users</li>
+                    <li>Collaborated with teams to improve operational efficiency</li>
+                </ul>
+                <div class="tags">Skills: System Management, Customer Support, Inventory Control, Team Collaboration</div>
+            </article>
+
+            <article class="item" aria-labelledby="exp-2-title">
+                <div class="item-header">
+                    <div>
+                        <div id="exp-2-title" class="role">ERP & POS System Developer</div>
+                        <div class="org">WBX Technologies · Pakistan</div>
+                    </div>
+                    <div class="meta">October 2021 – March 2023</div>
+                </div>
+                <ul class="bullets">
+                    <li>Built comprehensive ERP systems for business operations including inventory, sales, and reporting</li>
+                    <li>Developed POS systems with integrated payment processing and receipt management</li>
+                    <li>Implemented quality control processes and data validation systems</li>
+                    <li>Provided user training and technical support for retail operations</li>
+                </ul>
+                <div class="tags">Skills: Business Systems, Process Improvement, User Training, Quality Control</div>
+            </article>
+        </section>
+
+        <section id="education" class="section" aria-labelledby="education-title">
+            <h2 id="education-title">Education & Qualifications</h2>
+            <article class="item" aria-labelledby="edu-1-title">
+                <div class="item-header">
+                    <div>
+                        <div id="edu-1-title" class="role">Bachelor of Information Technology</div>
+                        <div class="org">GC University Faisalabad, Pakistan</div>
+                    </div>
+                    <div class="meta">October 2018 – October 2022</div>
+                </div>
+                <div class="tags">Final Year Project: E-Commerce Website · Grade: A</div>
+            </article>
+
+            <article class="item" aria-labelledby="edu-2-title">
+                <div class="item-header">
+                    <div>
+                        <div id="edu-2-title" class="role">Full Stack Developer Certification</div>
+                        <div class="org">Technolangs Training Institute</div>
+                    </div>
+                    <div class="meta">February 2021 – June 2021</div>
+                </div>
+            </article>
+        </section>
+
+        <section id="additional" class="section" aria-labelledby="additional-title">
+            <h2 id="additional-title">Additional Information</h2>
+            <div class="item">
+                <h3 style="margin: 0 0 10px 0; color: var(--accent);">Work Preferences</h3>
+                <ul class="bullets">
+                    <li>Available for immediate start</li>
+                    <li>Flexible with working hours including evenings and weekends</li>
+                    <li>Comfortable with shift work and rotating schedules</li>
+                    <li>Willing to work in various retail environments (shops, supermarkets, warehouses)</li>
+                    <li>Open to training and development opportunities</li>
+                </ul>
+            </div>
+            
+            <div class="item">
+                <h3 style="margin: 0 0 10px 0; color: var(--accent);">Right to Work</h3>
+                <p style="margin: 0; font-size: 14px;">I have the right to work in the UK and can provide necessary documentation upon request.</p>
+            </div>
+        </section>
+        
+    </main>
+</body>
+</html>
