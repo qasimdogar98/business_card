@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Self-Hosted POS System - Complete Documentation</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12pt;
+            line-height: 1.6;
+            margin: 1in;
+            color: #000;
+            background: #fff;
+        }
+        h1 {
+            font-size: 18pt;
+            font-weight: bold;
+            text-align: center;
+            margin: 24pt 0 16pt 0;
+            color: #1a1a1a;
+        }
+        h2 {
+            font-size: 15pt;
+            font-weight: bold;
+            margin: 20pt 0 12pt 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 6pt;
+        }
+        h3 {
+            font-size: 13pt;
+            font-weight: bold;
+            margin: 16pt 0 10pt 0;
+            color: #34495e;
+        }
+        h4 {
+            font-size: 12pt;
+            font-weight: bold;
+            margin: 12pt 0 8pt 0;
+            color: #555;
+            font-style: italic;
+        }
+        p {
+            text-align: justify;
+            margin: 0 0 10pt 0;
+        }
+        ul, ol {
+            margin: 0 0 10pt 0;
+            padding-left: 35px;
+        }
+        li {
+            margin-bottom: 5pt;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 16px 0;
+        }
+        th, td {
+            border: 1px solid #34495e;
+            padding: 8px;
+            text-align: left;
+            font-size: 11pt;
+        }
+        th {
+            background-color: #ecf0f1;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* Professional subtle colors for diagrams */
+        .diagram {
+            margin: 24px 0;
+            page-break-inside: avoid;
+        }
+        .diagram-title {
+            font-weight: bold;
+            font-size: 11pt;
+            text-align: center;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+        .box {
+            border: 2px solid #34495e;
+            padding: 12px;
+            margin: 10px auto;
+            text-align: center;
+            max-width: 450px;
+            font-size: 10.5pt;
+            background: #fff;
+        }
+        .box-blue {
+            background: #ebf5fb;
+            border-color: #5dade2;
+        }
+        .box-green {
+            background: #eafaf1;
+            border-color: #52be80;
+        }
+        .box-gray {
+            background: #f4f6f7;
+            border-color: #7f8c8d;
+        }
+        .box-orange {
+            background: #fef5e7;
+            border-color: #f39c12;
+        }
+        .box-header {
+            font-weight: bold;
+            margin-bottom: 6px;
+            font-size: 11pt;
+        }
+        .arrow {
+            text-align: center;
+            margin: 8px 0;
+            font-size: 18pt;
+            color: #34495e;
+        }
+        .flow-step {
+            border: 1px solid #95a5a6;
+            padding: 10px;
+            margin: 8px 0;
+            background: #fdfefe;
+        }
+        .flow-step.highlight {
+            background: #ebf5fb;
+            border-color: #5dade2;
+        }
+        .step-num {
+            display: inline-block;
+            background: #34495e;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .layer-box {
+            border: 2px solid #34495e;
+            padding: 12px;
+            margin: 8px 0;
+        }
+        .layer-title {
+            font-weight: bold;
+            background: #34495e;
+            color: white;
+            padding: 6px;
+            margin: -12px -12px 10px -12px;
+            text-align: center;
+        }
+        .component {
+            display: inline-block;
+            border: 1px solid #95a5a6;
+            padding: 6px 12px;
+            margin: 4px;
+            background: white;
+            font-size: 10pt;
+        }
+        .grid-container {
+            display: table;
+            width: 100%;
+            margin: 16px 0;
+            border: 1px solid #34495e;
+        }
+        .grid-row {
+            display: table-row;
+        }
+        .grid-cell {
+            display: table-cell;
+            border: 1px solid #95a5a6;
+            padding: 12px;
+            vertical-align: top;
+        }
+        .grid-header {
+            font-weight: bold;
+            background: #ecf0f1;
+            padding: 6px;
+            margin: -12px -12px 8px -12px;
+            text-align: center;
+            color: #2c3e50;
+        }
+        .note-box {
+            border-left: 4px solid #3498db;
+            background: #eaf2f8;
+            padding: 12px;
+            margin: 16px 0;
+            font-size: 10.5pt;
+        }
+        .note-title {
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+        .feature-box {
+            border: 1px solid #bdc3c7;
+            padding: 10px;
+            margin: 8px 0;
+            background: #fcfdfd;
+        }
+        .title-page {
+            text-align: center;
+            margin-top: 250px;
+        }
+        .title-page h1 {
+            font-size: 22pt;
+            margin-bottom: 40pt;
+        }
+    </style>
+</head>
+<body>
+
+<div class="title-page">
+    <h1>SELF-HOSTED POINT OF SALE SYSTEM</h1>
+    <p style="font-size: 15pt; margin: 25px 0;">A Comprehensive Web-Based Inventory and Sales Management Solution</p>
+    <p style="font-size: 13pt; margin: 50px 0 20px 0;">Complete Technical Documentation</p>
+    <p style="margin-top: 100px; font-size: 12pt;">Technology Stack: Laravel 8 | PHP 7.3+ | MySQL 5.7+ | Vue.js</p>
+    <p style="font-size: 11pt;">Self-Hosted Web Application</p>
+</div>
+
+<div class="page-break"></div>
+
+<h1>TABLE OF CONTENTS</h1>
+
+<ol style="line-height: 2.0;">
+    <li>Introduction and Project Overview</li>
+    <li>Project Objectives and Goals</li>
+    <li>System Architecture and Design
+        <ol style="list-style-type: lower-alpha;">
+            <li>Architectural Pattern</li>
+            <li>System Components</li>
+            <li>Technology Stack Overview</li>
+        </ol>
+    </li>
+    <li>Installation and Setup Process</li>
+    <li>Core System Modules
+        <ol style="list-style-type: lower-alpha;">
+            <li>User Management</li>
+            <li>Product Management</li>
+            <li>Inventory Control</li>
+            <li>Sales Processing</li>
+            <li>Purchase Management</li>
+            <li>Point of Sale Interface</li>
+            <li>Accounting Module</li>
+            <li>Reporting System</li>
+        </ol>
+    </li>
+    <li>Database Architecture</li>
+    <li>Business Process Workflows</li>
+    <li>Security Implementation</li>
+    <li>Deployment Strategies</li>
+    <li>System Features and Capabilities</li>
+    <li>Performance and Optimization</li>
+    <li>Advantages and Limitations</li>
+    <li>Future Development Roadmap</li>
+    <li>Conclusion</li>
+</ol>
+
+<div class="page-break"></div>
+
+<h2>1. INTRODUCTION AND PROJECT OVERVIEW</h2>
+
+<p>This document provides comprehensive technical documentation for a Self-Hosted Point of Sale (POS) System designed specifically for small to medium-sized retail businesses. The system addresses the growing need for affordable, reliable, and secure retail management software that operates independently of cloud service providers and recurring subscription models.</p>
+
+<p>Modern retail businesses face several challenges when selecting point-of-sale and inventory management software. Cloud-based solutions often require continuous internet connectivity, impose ongoing subscription fees that scale with business size, and raise concerns about data privacy and ownership. This system was developed to address these challenges by providing a self-contained, self-hosted solution that businesses can deploy on their own infrastructure.</p>
+
+<p>The application is built as a web-based platform accessible through standard web browsers, eliminating the need for specialized client software installation. Once deployed on a local server or web hosting environment, the system operates independently and provides complete control over business data. The architecture supports both local network deployment for single-location businesses and internet-accessible deployment for multi-location operations.</p>
+
+<div class="note-box">
+    <div class="note-title">Key System Characteristics:</div>
+    The system combines traditional point-of-sale functionality with comprehensive inventory management, financial tracking, and business intelligence reporting. It supports multi-warehouse operations, role-based access control, and integrates with email and SMS notification services. The built-in automated installer simplifies deployment by guiding users through server requirement verification, database configuration, and initial setup.
+</div>
+
+<p>The development approach prioritized practical functionality over unnecessary features. Every module included in the system addresses specific operational requirements identified through analysis of retail business processes. The user interface design focuses on efficiency and ease of use rather than aesthetic complexity, recognizing that retail staff need to process transactions quickly and accurately.</p>
+
+<p>This documentation is structured to provide both high-level overview and detailed technical information. It serves multiple audiences including IT personnel responsible for deployment, system administrators managing ongoing operations, and business managers seeking to understand system capabilities. Technical sections include architecture diagrams, database schema details, and workflow descriptions. Business-focused sections cover features, benefits, and operational procedures.</p>
+
+<div class="page-break"></div>
+
+<h2>2. PROJECT OBJECTIVES AND GOALS</h2>
+
+<p>The system was developed with clearly defined objectives derived from analysis of retail business requirements and identified gaps in existing software solutions.</p>
+
+<h3>2.1 Primary Technical Objectives</h3>
+
+<p>The primary technical objectives focused on creating a robust, self-contained system:</p>
+
+<ul>
+    <li><strong>Operational Independence:</strong> Design the system to function without continuous internet connectivity after initial installation. This ensures business continuity during network outages and eliminates dependency on third-party service availability.</li>
+    
+    <li><strong>Data Sovereignty:</strong> Provide complete control over business data by storing all information on infrastructure owned or controlled by the business. This addresses privacy concerns and enables compliance with data protection regulations.</li>
+    
+    <li><strong>Transaction Efficiency:</strong> Optimize the point-of-sale interface for rapid transaction processing. The goal was to minimize the number of clicks and screens required to complete a sale, improving customer service during busy periods.</li>
+    
+    <li><strong>Multi-Location Support:</strong> Implement inventory tracking across multiple warehouse or store locations while maintaining centralized control. Each location operates independently but synchronizes data with the central system.</li>
+    
+    <li><strong>Real-Time Accuracy:</strong> Ensure inventory quantities, financial data, and customer information remain accurate and current through automatic updates triggered by business transactions.</li>
+</ul>
+
+<h3>2.2 Business Objectives</h3>
+
+<p>Business objectives addressed cost management, operational flexibility, and regulatory compliance:</p>
+
+<ul>
+    <li><strong>Cost Control:</strong> Eliminate recurring subscription fees and per-user licensing costs that burden growing businesses. The one-time deployment cost provides predictable total cost of ownership.</li>
+    
+    <li><strong>Scalability:</strong> Support business growth without additional licensing costs. As businesses add employees, products, or locations, the system accommodates expansion without software cost increases.</li>
+    
+    <li><strong>Customization Capability:</strong> Provide access to source code enabling businesses to modify functionality or integrate with existing systems as requirements evolve.</li>
+    
+    <li><strong>Regulatory Compliance:</strong> Support compliance with tax reporting, financial auditing, and data protection requirements through comprehensive record keeping and reporting.</li>
+</ul>
+
+<h3>2.3 User Experience Objectives</h3>
+
+<ul>
+    <li><strong>Intuitive Interface:</strong> Design interfaces that require minimal training for staff to use effectively</li>
+    <li><strong>Role-Based Access:</strong> Implement granular permission controls so each user sees only relevant features</li>
+    <li><strong>Responsive Design:</strong> Ensure the interface works effectively on devices from desktop computers to tablets</li>
+    <li><strong>Multilingual Support:</strong> Provide interface translations for diverse user populations</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h2>3. SYSTEM ARCHITECTURE AND DESIGN</h2>
+
+<h3>3.1 Architectural Pattern</h3>
+
+<p>The system implements the Model-View-Controller (MVC) architectural pattern, a proven approach for web application design that separates concerns into three interconnected components. This separation improves code organization, facilitates maintenance, and enables different aspects of the application to evolve independently.</p>
+
+<div class="diagram">
+    <p class="diagram-title">Figure 3.1: MVC Architecture Implementation</p>
+    
+    <div class="layer-box" style="background: #ebf5fb;">
+        <div class="layer-title" style="background: #5dade2;">VIEW LAYER - User Interface</div>
+        <div style="padding: 10px;">
+            <div class="component">Blade Templates</div>
+            <div class="component">HTML/CSS</div>
+            <div class="component">JavaScript</div>
+            <div class="component">Vue.js Components</div>
+            <div class="component">Bootstrap Framework</div>
+        </div>
+        <p style="margin-top: 10px; font-size: 10pt;">Handles user interaction, displays data, captures input</p>
+    </div>
+    
+    <div class="arrow">↕</div>
+    
+    <div class="layer-box" style="background: #eafaf1;">
+        <div class="layer-title" style="background: #52be80;">CONTROLLER LAYER - Business Logic</div>
+        <div style="padding: 10px;">
+            <div class="component">ProductsController</div>
+            <div class="component">SalesController</div>
+            <div class="component">PurchasesController</div>
+            <div class="component">PosController</div>
+            <div class="component">UserController</div>
+            <div class="component">ReportController</div>
+        </div>
+        <p style="margin-top: 10px; font-size: 10pt;">Processes user requests, implements business rules, coordinates between View and Model</p>
+    </div>
+    
+    <div class="arrow">↕</div>
+    
+    <div class="layer-box" style="background: #fef5e7;">
+        <div class="layer-title" style="background: #f39c12;">MODEL LAYER - Data Management</div>
+        <div style="padding: 10px;">
+            <div class="component">Product Model</div>
+            <div class="component">Sale Model</div>
+            <div class="component">Purchase Model</div>
+            <div class="component">User Model</div>
+            <div class="component">Warehouse Model</div>
+            <div class="component">Eloquent ORM</div>
+        </div>
+        <p style="margin-top: 10px; font-size: 10pt;">Manages data access, database operations, business entities</p>
+    </div>
+    
+    <div class="arrow">↓</div>
+    
+    <div class="box box-gray">
+        <strong>MySQL DATABASE</strong><br>
+        47 Tables | Relational Schema | Normalized Structure
+    </div>
+</div>
+
+<h4>Model Component Responsibilities</h4>
+
+<p>The Model layer represents business entities and manages data persistence. Each model corresponds to a database table and encapsulates the logic for creating, reading, updating, and deleting records. Models also define relationships between entities. For example, the Sale model defines its relationship to Customer, Warehouse, and SaleDetail models. Laravel's Eloquent ORM provides the foundation for model functionality, offering an intuitive API for database operations without requiring raw SQL queries.</p>
+
+<h4>View Component Responsibilities</h4>
+
+<p>Views handle presentation logic and user interface rendering. The system uses Laravel's Blade templating engine which provides a clean syntax for embedding PHP code in HTML templates. Views receive data from controllers and format it for display. They capture user input through forms and interactive elements. The separation between views and business logic means the interface can be redesigned without modifying the underlying application logic.</p>
+
+<h4>Controller Component Responsibilities</h4>
+
+<p>Controllers serve as intermediaries between models and views. When a user submits a form or clicks a link, the request is routed to the appropriate controller method. The controller validates input, calls model methods to perform database operations, implements business rules, and selects the appropriate view to render the response. Controllers contain no database queries directly; instead, they delegate data operations to models.</p>
+
+<h3>3.2 System Components and Modules</h3>
+
+<p>The application is organized into functional modules, each addressing specific business requirements:</p>
+
+<div class="grid-container">
+    <div class="grid-row">
+        <div class="grid-cell">
+            <div class="grid-header" style="background: #ebf5fb; color: #2c3e50;">Installation Module</div>
+            <strong>Purpose:</strong> Automated system deployment<br><br>
+            <strong>Features:</strong>
+            <ul style="font-size: 10pt; margin-top: 5px;">
+                <li>Server requirement verification</li>
+                <li>Database configuration</li>
+                <li>Initial data population</li>
+                <li>Administrator account creation</li>
+            </ul>
+        </div>
+        <div class="grid-cell">
+            <div class="grid-header" style="background: #eafaf1; color: #2c3e50;">Authentication Module</div>
+            <strong>Purpose:</strong> User access control<br><br>
+            <strong>Features:</strong>
+            <ul style="font-size: 10pt; margin-top: 5px;">
+                <li>Secure login/logout</li>
+                <li>Password encryption</li>
+                <li>Session management</li>
+                <li>Permission verification</li>
+            </ul>
+        </div>
+        <div class="grid-cell">
+            <div class="grid-header" style="background: #fef5e7; color: #2c3e50;">Product Module</div>
+            <strong>Purpose:</strong> Catalog management<br><br>
+            <strong>Features:</strong>
+            <ul style="font-size: 10pt; margin-top: 5px;">
+                <li>Product CRUD operations</li>
+                <li>Variant management</li>
+                <li>Category organization</li>
+                <li>Barcode integration</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<h3>3.3 Request Processing Flow</h3>
+
+<div class="diagram">
+    <p class="diagram-title">Figure 3.2: HTTP Request Lifecycle</p>
+    
+    <div class="flow-step">
+        <span class="step-num">1</span>
+        User initiates action (clicks button, submits form, accesses URL)
+    </div>
+    
+    <div class="flow-step">
+        <span class="step-num">2</span>
+        Web server receives HTTP request and passes to Laravel application
+    </div>
+    
+    <div class="flow-step highlight">
+        <span class="step-num">3</span>
+        <strong>Routing:</strong> Laravel router matches request URL to defined route
+    </div>
+    
+    <div class="flow-step">
+        <span class="step-num">4</span>
+        <strong>Middleware:</strong> Request passes through middleware stack (authentication, CSRF, XSS protection)
+    </div>
+    
+    <div class="flow-step highlight">
+        <span class="step-num">5</span>
+        <strong>Controller:</strong> Appropriate controller method is invoked
+    </div>
+    
+    <div class="flow-step">
+        <span class="step-num">6</span>
+        <strong>Validation:</strong> Controller validates user input against defined rules
+    </div>
+    
+    <div class="flow-step">
+        <span class="step-num">7</span>
+        <strong>Business Logic:</strong> Controller implements business rules and processes request
+    </div>
+    
+    <div class="flow-step highlight">
+        <span class="step-num">8</span>
+        <strong>Model Interaction:</strong> Controller calls model methods to query or modify database
+    </div>
+    
+    <div class="flow-step">
+        <span class="step-num">9</span>
+        <strong>View Rendering:</strong> Controller passes data to view for presentation
+    </div>
+    
+    <div class="flow-step">
+        <span class="step-num">10</span>
+        HTTP response is generated and returned to user's browser
+    </div>
+</div>
+
+<div class="page-break"></div>
+
+<h2>4. INSTALLATION AND SETUP PROCESS</h2>
+
+<h3>4.1 Installation System Overview</h3>
+
+<p>The system includes a sophisticated installation wizard designed to guide users through deployment without requiring extensive technical expertise. The installer automates complex tasks including database schema creation, initial data population, and security configuration. This approach significantly reduces deployment time and minimizes configuration errors that could affect system stability.</p>
+
+<p>The installation process is initiated automatically when a user accesses the application URL for the first time. The system detects the absence of an installation marker file and redirects the user to the setup interface. This ensures that misconfigured or incomplete installations cannot proceed to normal operation.</p>
+
+<div class="diagram">
+    <p class="diagram-title">Figure 4.1: Complete Installation Flow Diagram</p>
+    
+    <div class="box box-green">
+        <strong>START</strong><br>
+        User accesses application URL
+    </div>
+    
+    <div class="arrow">↓</div>
+    
+    <div class="box box-blue">
+        <strong>Detection Phase</strong><br>
+        System checks for installation marker file in storage directory
+    </div>
+    
+    <div class="arrow">↓</div>
+    
+    <div class="box box-gray">
+        Installation Not Detected<br>
+        Redirect to setup wizard
+    </div>
+    
+    <div class="arrow">↓</div>
+    
+    <div class="box box-blue">
+        <div class="box-header">STEP 1: Requirements Check</div>
+        • Verify PHP version (≥7.3)<br>
+        • Check PHP extensions (PDO, OpenSSL, Mbstring, etc.)<br>
+        • Test directory permissions (storage/, bootstrap/cache/)<br>
+        • Validate server configuration
+    </div>
+    
+    <div class="arrow">↓</div>
+    
+    <div class="box box-gray">
+        Requirements Met?<br>
+        YES → Continue | NO → Display errors and stop
+    </div>
+    
+    <div class="arrow">↓ YES</div>
+    
+    <div class="box box-blue">
+        <div class="box-header">STEP 2: Application Settings</div>
+        • Application name (user input)<br>
+        • Environment selection (production/development)<br>
+        • Debug mode configuration<br>
+        • Generate application encryption key (APP_KEY)
+    </div>
+    
+    <div class="arrow">↓</div>
+    
+    <div class="box box-blue">
+        <div class="box-header">STEP 3: Database Configuration</div>
+        • Database host (default: localhost)<br>
+        • Database port (default: 3306)<br>
+        • Database name (user input)<br>
+        • Username and password<br>
+        • Test connection validity
+    </div>
+    
+    <div class="arrow">↓</div>
+    
+    <div class="box box-gray">
+        Connection Successful?<br>
+        YES → Continue | NO → Re-enter credentials
+    </div>
+    
+    <div class="arrow">↓ YES</div>
+    
+    <div class="box box-blue">
+        <div class="box-header">STEP 4: Database Initialization</div>
+        • Run migrations (create 47 tables)<br>
+        • Execute seeders (populate default data)<br>
+        • Create roles (Super-Admin, Admin, Employee)<br>
+        • Create permissions (85+ permissions)<br>
+        • Create administrator account<br>
+        • Set up default settings
+    </div>
+    
+    <div class="arrow">↓</div>
+    
+    <div class="box box-blue">
+        <strong>Finalization</strong><br>
+        • Write installation marker file<br>
+        • Clear application cache<br>
+        • Generate success message
+    </div>
+    
+    <div class="arrow">↓</div>
+    
+    <div class="box box-green">
+        <strong>COMPLETE</strong><br>
+        Redirect to login page<br>
+        System ready for use
+    </div>
+</div>
+
+<h3>4.2 Detailed Step Analysis</h3>
+
+<h4>Step 1: Server Requirements Verification</h4>
+
+<p>The first installation step performs comprehensive environment validation. The installer checks the PHP version to ensure it meets the minimum requirement of 7.3 or higher. Modern PHP versions (8.0+) are recommended for improved performance and security features.</p>
+
+<p>Required PHP extensions are verified individually. The PDO extension enables database connectivity. OpenSSL provides encryption capabilities for secure data transmission. Mbstring handles multi-byte string operations necessary for international character support. Tokenizer parses PHP code for framework operation. XML and JSON extensions enable data format processing. The Ctype extension provides character type checking functions.</p>
+
+<p>Directory permissions are tested to ensure the web server process can write to critical directories. The storage directory must be writable for logs, cache, sessions, and uploaded files. The bootstrap/cache directory requires write access for framework optimization files. If permission checks fail, the installer displays detailed instructions for correcting the issue.</p>
+
+<h4>Step 2: Application Configuration</h4>
+
+<p>In this step, users configure fundamental application parameters. The application name entered here appears throughout the interface in page titles, email notifications, and generated documents. This allows businesses to brand the system with their company name.</p>
+
+<p>The environment setting determines how the application handles errors and logging. Production mode suppresses detailed error messages visible to users and optimizes performance through caching. Development mode displays verbose error information useful during troubleshooting but should never be enabled on live systems.</p>
+
+<p>The application key is a cryptographically secure random string used by Laravel for encrypting session data, cookies, and other sensitive information. The installer generates this key automatically using secure random number generation, ensuring each installation has a unique key that cannot be predicted.</p>
+
+<div class="note-box">
+    <div class="note-title">Security Note:</div>
+    The application key must be kept confidential. If compromised, encrypted data could be decrypted by unauthorized parties. The key is stored in the .env file which should never be committed to version control systems or shared publicly.
+</div>
+
+<h4>Step 3: Database Connection Configuration</h4>
+
+<p>Database configuration is the most critical setup step. Users must provide connection details for a MySQL database server. The database must be created manually before starting the installation; the installer does not create the database itself but will create all tables within the specified database.</p>
+
+<p>The database host is typically "localhost" when MySQL runs on the same server as the web application. Remote database servers require the hostname or IP address. The port defaults to 3306 for MySQL but can be customized if the database server uses a non-standard port.</p>
+
+<p>The database username must have sufficient privileges to create tables, indexes, and foreign key constraints within the specified database. Read-only or restricted accounts will cause installation failure. The installer tests the connection immediately after users enter credentials, providing immediate feedback if the configuration is incorrect.</p>
+
+<h4>Step 4: Database Schema Creation and Initialization</h4>
+
+<p>The final step executes multiple database operations automatically. Migration files define the structure of each database table including column definitions, indexes, and foreign key relationships. The Laravel migration system executes these files in order, creating the complete database schema.</p>
+
+<p>After creating tables, seeder classes populate initial data required for system operation. The permission seeder creates 85 distinct permissions covering every system operation. The role seeder creates three default roles and associates appropriate permissions with each role. The user seeder creates the initial Super Administrator account with credentials provided during installation.</p>
+
+<p>Default settings are configured including the base currency, date format, and system locale. Payment method records are created for common methods like cash, credit card, bank transfer, and cheque. These can be modified or extended after installation through the admin interface.</p>
+
+<h3>4.3 Post-Installation Procedures</h3>
+
+<p>Upon successful completion, the installer creates a marker file in the storage/app/public directory. This file's presence prevents the installer from running again, protecting against accidental system reinitialization that would destroy existing data.</p>
+
+<p>Users are redirected to the login page where they can authenticate using the administrator credentials configured during installation. The dashboard displays immediately after login, confirming successful deployment. At this point, the system is fully operational and ready for configuration of business-specific settings like company information, warehouse locations, and user accounts.</p>
+
+<div class="page-break"></div>
+
+<h2>5. CORE SYSTEM MODULES</h2>
+
+<h3>5.1 User Management and Authentication</h3>
+
+<p>The user management system provides secure access control and enables multiple employees to use the system simultaneously with appropriate permission restrictions.</p>
+
+<h4>Authentication Mechanism</h4>
+
+<p>The authentication system implements session-based login using Laravel's built-in authentication scaffolding. When users submit login credentials, the system queries the users table to retrieve the account record matching the provided email address. If found, the submitted password is hashed using the bcrypt algorithm and compared to the stored hash. This comparison is performed in constant time to prevent timing attacks that could reveal information about stored passwords.</p>
+
+<div class="diagram">
+    <p class="diagram-title">Figure 5.1: User Authentication Process Flow</p>
+    
+    <div class="box">
+        User submits email and password via login form
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box box-blue">
+        System validates input format (email valid, password not empty)
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box">
+        Query database for user record matching email
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box box-gray">
+        User Found?<br>
+        NO → Return "Invalid credentials" error
+    </div>
+    <div class="arrow">↓ YES</div>
+    
+    <div class="box box-blue">
+        Hash submitted password with bcrypt<br>
+        Compare with stored password hash
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box box-gray">
+        Password Matches?<br>
+        NO → Return "Invalid credentials" error
+    </div>
+    <div class="arrow">↓ YES</div>
+    
+    <div class="box box-blue">
+        Check user account status field
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box box-gray">
+        Status = Active?<br>
+        NO → Return "Account inactive" error
+    </div>
+    <div class="arrow">↓ YES</div>
+    
+    <div class="box box-blue">
+        Load user's assigned role from database<br>
+        Load all permissions associated with role
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box box-green">
+        Create authenticated session<br>
+        Store user ID and permissions in session
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box">
+        Determine user type: Admin or Employee
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box box-green">
+        Redirect to appropriate dashboard<br>
+        • Admin → /dashboard/admin<br>
+        • Employee → /dashboard/employee
+    </div>
+</div>
+
+<p>Sessions are configured to expire after 120 minutes of inactivity by default. This timeout can be adjusted through the config/session.php file. When a session expires, users must authenticate again to continue working. This security measure prevents unauthorized access if a user leaves their workstation unattended.</p>
+
+<h4>Role-Based Access Control (RBAC) Implementation</h4>
+
+<p>The system implements role-based access control using the Spatie Laravel Permission package. This package provides a flexible framework for defining roles, permissions, and the relationships between them. Unlike simple admin/non-admin systems, this approach allows granular control over what each user can access and modify.</p>
+
+<p>Permissions are defined as simple strings like "product_view", "sale_create", or "report_financial". Each permission corresponds to a specific action in the system. Controllers check permissions before executing actions. For example, before displaying the product list, the ProductsController verifies the current user has the "product_view" permission.</p>
+
+<p>Roles are collections of permissions. The Super-Admin role includes all permissions, providing unrestricted access. The Admin role includes most operational permissions but excludes critical system configuration like user role management. The Employee role includes only basic permissions for sales and inventory viewing. Additional custom roles can be created with any combination of permissions to match specific job functions.</p>
+
+<div class="diagram">
+    <p class="diagram-title">Figure 5.2: Permission Check Flow in Controllers</p>
+    
+    <div class="box">
+        User clicks "View Products" link
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box box-blue">
+        Request routed to ProductsController@index
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box box-blue">
+        Controller retrieves authenticated user object
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box">
+        Check: $user->can('product_view')?
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box box-gray">
+        Has Permission?<br>
+        NO → Return 403 Forbidden error
+    </div>
+    <div class="arrow">↓ YES</div>
+    
+    <div class="box box-green">
+        Execute controller logic<br>
+        Query products from database<br>
+        Return view with product data
+    </div>
+</div>
+
+<h4>User Account Management</h4>
+
+<p>Administrators with appropriate permissions can create, modify, and deactivate user accounts through the user management interface. Each user account stores username, email address, encrypted password, status flag, avatar image path, assigned role, and warehouse access settings.</p>
+
+<p>The warehouse access system enables restricting users to specific locations. When creating a user, administrators can select whether the user has access to all warehouses or only specific ones. If restricted, administrators select which warehouses the user can access. This restriction affects inventory visibility and transaction processing—restricted users can only create sales and purchases for their assigned warehouses.</p>
+
+<h3>5.2 Product Management Module</h3>
+
+<p>The product management module handles catalog creation, organization, and maintenance. It provides comprehensive tools for managing inventory items with all relevant commercial and logistical information.</p>
+
+<h4>Product Data Structure</h4>
+
+<p>Each product record contains multiple data elements organized into logical groups:</p>
+
+<table>
+    <tr>
+        <th>Data Category</th>
+        <th>Fields</th>
+        <th>Purpose</th>
+    </tr>
+    <tr>
+        <td>Identification</td>
+        <td>Code, Barcode, SKU, Name</td>
+        <td>Uniquely identify products for inventory tracking and sales</td>
+    </tr>
+    <tr>
+        <td>Classification</td>
+        <td>Category, Sub-category, Brand</td>
+        <td>Organize products into logical groups for navigation and reporting</td>
+    </tr>
+    <tr>
+        <td>Pricing</td>
+        <td>Cost, Price, Tax Rate, Tax Method</td>
+        <td>Define purchase cost, selling price, and tax treatment</td>
+    </tr>
+    <tr>
+        <td>Inventory</td>
+        <td>Type, Stock Management Flag, Minimum Quantity</td>
+        <td>Control stock tracking behavior and alert thresholds</td>
+    </tr>
+    <tr>
+        <td>Units</td>
+        <td>Purchase Unit, Sale Unit, Conversion Factor</td>
+        <td>Handle products purchased and sold in different units</td>
+    </tr>
+    <tr>
+        <td>Promotion</td>
+        <td>Promo Flag, Promo Price, Start Date, End Date</td>
+        <td>Support temporary promotional pricing</td>
+    </tr>
+    <tr>
+        <td>Visual</td>
+        <td>Image Path</td>
+        <td>Store product photo for POS display</td>
+    </tr>
+</table>
+
+<h4>Product Variant System</h4>
+
+<p>Many products exist in multiple variations that share common characteristics but differ in specific attributes. A smartphone model might be available in different storage capacities or colors. The system handles these scenarios through product variants.</p>
+
+<p>When a product has variants, a parent product record represents the common attributes while variant records store the distinguishing attributes. Each variant has its own code, price, and can have independent stock quantities. This enables precise inventory tracking at the variant level.</p>
+
+<p>For example, a "Smartphone Model X" parent product would have variants like "Smartphone Model X - 64GB Black", "Smartphone Model X - 128GB White", etc. Each variant maintains separate stock quantities in each warehouse, enabling accurate tracking of specific configurations.</p>
+
+<h4>Category Hierarchy</h4>
+
+<p>Products are organized using a two-level category structure. Main categories provide broad classification (Electronics, Clothing, Food & Beverage). Subcategories within each main category provide finer-grained organization (under Electronics: Smartphones, Laptops, Accessories).</p>
+
+<p>This hierarchy serves multiple purposes. It enables logical navigation in the POS interface where cashiers can browse categories to find products. It supports filtering in reports where managers want to analyze sales by category. It facilitates bulk operations where administrators need to apply price changes or promotions to entire categories.</p>
+
+<h4>Unit of Measurement Handling</h4>
+
+<p>The unit system solves a common retail challenge: products are often purchased in one unit but sold in another. Beverages might be purchased from suppliers in cases of 24 bottles but sold individually. Building materials might be purchased in bulk quantities but sold in smaller amounts.</p>
+
+<p>Each product specifies a purchase unit and a sale unit. A conversion factor defines the relationship between these units. The system uses this conversion factor to maintain accurate inventory. When a purchase order receives 10 cases (purchase unit), and the conversion factor indicates 1 case = 24 bottles (sale unit), the system increases inventory by 240 bottles. When a sale occurs, inventory decreases by the number of bottles sold, and the system converts back to cases for purchase reorder calculations.</p>
+
+<h4>Barcode Integration</h4>
+
+<p>Barcodes enable rapid product lookup during sales transactions. The system supports multiple barcode formats including CODE128 (alphanumeric codes), CODE39 (industrial standard), EAN13 (international standard for retail), and UPC-A (North American retail standard).</p>
+
+<p>Products can be assigned barcodes in two ways. For products with manufacturer barcodes, users simply enter the existing barcode value. For products without barcodes, the system can generate internal codes using the product's code or SKU.</p>
+
+<p>During POS operation, cashiers use barcode scanners configured as keyboard input devices. When a barcode is scanned, the scanner sends the barcode value as if it were typed on a keyboard. The POS interface captures this input and queries the database for a product matching the barcode. If found, the product is added to the cart immediately.</p>
+
+<h4>Bulk Import Functionality</h4>
+
+<p>For businesses transitioning from other systems or setting up large catalogs, manual product entry is impractical. The bulk import feature addresses this by accepting Excel spreadsheet files containing product data.</p>
+
+<p>The system provides a template Excel file with the required column structure. Users download this template, populate it with their product information, and upload the completed file. The import processor validates each row, checking for required fields, correct data types, and referential integrity (ensuring referenced categories and brands exist). Valid rows are imported while invalid rows are reported with specific error messages enabling correction.</p>
+
+<div class="page-break"></div>
+
+<h3>5.3 Inventory Management System</h3>
+
+<p>The inventory management system tracks stock quantities, locations, and movements with precision necessary for accurate business operations and financial reporting.</p>
+
+<h4>Multi-Warehouse Architecture</h4>
+
+<p>The system's multi-warehouse capability enables businesses to track inventory across multiple physical locations simultaneously. This is essential for businesses with multiple store locations, separate storage facilities, or distributed operations.</p>
+
+<p>Each warehouse is defined with identifying information including name, physical address, contact phone number, email, city, country, and postal code. This information appears on purchase orders and transfer documents.</p>
+
+<p>The core of the inventory system is the product_warehouse table which stores a record for each product-warehouse combination. For a business with 500 products and 3 warehouses, this table contains 1,500 records (500 × 3). Each record tracks the quantity available at that specific location.</p>
+
+<div class="diagram">
+    <p class="diagram-title">Figure 5.3: Multi-Warehouse Inventory Structure</p>
+    
+    <div class="grid-container">
+        <div style="text-align: center; padding: 15px; background: #ecf0f1; border: 2px solid #34495e;">
+            <strong>PRODUCT CATALOG</strong><br>
+            <div style="margin-top: 10px;">
+                <div style="display: inline-block; border: 1px solid #000; padding: 8px; margin: 4px; background: white;">Product A</div>
+                <div style="display: inline-block; border: 1px solid #000; padding: 8px; margin: 4px; background: white;">Product B</div>
+                <div style="display: inline-block; border: 1px solid #000; padding: 8px; margin: 4px; background: white;">Product C</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="arrow">↓</div>
+    
+    <div class="grid-container" style="border: 2px solid #34495e; padding: 15px;">
+        <div style="text-align: center; background: #d5dbdb; padding: 8px; margin-bottom: 10px;"><strong>PRODUCT_WAREHOUSE TABLE</strong></div>
+        
+        <table style="width: 100%; font-size: 10pt;">
+            <tr style="background: #85929e; color: white;">
+                <th>Product</th>
+                <th>Warehouse</th>
+                <th>Quantity</th>
+            </tr>
+            <tr>
+                <td>Product A</td>
+                <td>Warehouse 1</td>
+                <td>150</td>
+            </tr>
+            <tr style="background: #f9f9f9;">
+                <td>Product A</td>
+                <td>Warehouse 2</td>
+                <td>75</td>
+            </tr>
+            <tr>
+                <td>Product B</td>
+                <td>Warehouse 1</td>
+                <td>200</td>
+            </tr>
+            <tr style="background: #f9f9f9;">
+                <td>Product B</td>
+                <td>Warehouse 2</td>
+                <td>100</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="arrow">↓</div>
+    
+    <div class="grid-container">
+        <div style="text-align: center; padding: 15px; background: #ecf0f1; border: 2px solid #34495e;">
+            <strong>WAREHOUSES</strong><br>
+            <div style="margin-top: 10px;">
+                <div style="display: inline-block; border: 1px solid #000; padding: 8px; margin: 4px; background: #ebf5fb;">Warehouse 1<br><span style="font-size: 9pt;">Main Store</span></div>
+                <div style="display: inline-block; border: 1px solid #000; padding: 8px; margin: 4px; background: #eafaf1;">Warehouse 2<br><span style="font-size: 9pt;">Storage Facility</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4>Automatic Stock Updates</h4>
+
+<p>Inventory quantities update automatically in response to business transactions. This automatic updating eliminates manual inventory adjustments and ensures real-time accuracy.</p>
+
+<p>When a purchase order is saved, the system iterates through the purchase detail lines. For each line, it identifies the product and warehouse, locates the corresponding product_warehouse record, and increases the quantity field by the purchased amount (adjusted for unit conversion if necessary). If a product_warehouse record doesn't exist for that product-warehouse combination, the system creates one with the purchased quantity.</p>
+
+<p>Sales transactions work inversely. When a sale is completed, the system decreases inventory in the source warehouse. The process validates that sufficient stock exists before allowing the sale. If a cashier attempts to sell 10 units but only 7 are available, the system prevents the transaction and displays an insufficient stock warning.</p>
+
+<p>Returns adjust inventory in the opposite direction from their originating transactions. A sales return increases stock (products come back), while a purchase return decreases stock (products go back to supplier).</p>
+
+<h4>Stock Adjustment Process</h4>
+
+<p>Despite automatic updates, real-world inventory sometimes differs from system records due to factors like damaged goods, theft, or counting errors discovered during physical inventory audits. Stock adjustments enable correcting these discrepancies.</p>
+
+<p>When creating an adjustment, users specify the warehouse, select products requiring adjustment, and enter the discrepancy quantity (positive to add stock, negative to reduce). A reason field documents why the adjustment is necessary. Adjustments are saved with timestamps and user information, creating an audit trail.</p>
+
+<p>The system processes adjustments by directly modifying product_warehouse quantities. Unlike sales or purchases which create transactional records with complex details, adjustments simply change the quantity to match physical reality.</p>
+
+<h4>Inter-Warehouse Transfer Operations</h4>
+
+<p>Transfers move inventory between warehouses without involving sales or purchases. A business might transfer stock from a warehouse with excess inventory to a store location that is running low.</p>
+
+<p>Transfer documents specify source warehouse, destination warehouse, transfer date, and products with quantities to transfer. When saved, the system validates that the source warehouse has sufficient stock, then decreases quantity at the source and increases quantity at the destination simultaneously.</p>
+
+<p>Transfer documents serve as proof of movement for physical inventory management. They typically print in duplicate: one copy accompanies the goods in transit, while the other remains at the source location.</p>
+
+<h4>Low Stock Alert System</h4>
+
+<p>Each product can be configured with a minimum quantity threshold. When stock in any warehouse falls below this threshold, the system generates alerts visible on the admin dashboard and in dedicated reports.</p>
+
+<p>These alerts serve as reorder prompts, ensuring businesses replenish inventory before stockouts occur. The threshold should be set based on lead time from suppliers and average sales velocity. A product that sells 10 units per day with a 5-day supplier lead time should have a minimum threshold of at least 50 units.</p>
+
+<p>Administrators review low stock alerts regularly and create purchase orders to replenish inventory. The system can display not just products below minimum but also those approaching the threshold, enabling proactive ordering.</p>
+
+<div class="page-break"></div>
+
+<h3>5.4 Sales Management Module</h3>
+
+<p>The sales module processes customer transactions, manages quotations, handles returns, and tracks payment collection. It serves as the primary revenue-generating component of the system.</p>
+
+<h4>Customer Database</h4>
+
+<p>Customer records store information enabling relationship management and transaction processing. Beyond basic contact details (name, email, phone, address), the system tracks business-relevant data including tax identification numbers for tax reporting, credit limits for credit term management, and lifetime purchase totals for customer analytics.</p>
+
+<p>For businesses with large customer bases, the Excel import feature enables bulk customer data loading. The import process matches email addresses to prevent duplicate customer creation.</p>
+
+<h4>Sales Order Processing</h4>
+
+<p>A sales order represents a complete customer transaction. The sales table stores header-level information while sale_details table stores individual line items (products sold).</p>
+
+<p>Header information includes a system-generated reference number for unique identification, customer reference, transaction date and time, source warehouse, order status (pending, completed, cancelled), payment status (paid, unpaid, partial), total amounts including subtotal, tax, discount, and shipping charges. User ID tracks which employee processed the sale.</p>
+
+<p>Detail lines store product identification, quantity sold, unit price, per-line discount, tax rate, and line total. For products with variants, the variant ID is stored. For serialized items like electronics, serial numbers are captured per line.</p>
+
+<div class="diagram">
+    <p class="diagram-title">Figure 5.4: Sales Order Processing Workflow</p>
+    
+    <div class="box">
+        <strong>1. Order Initiation</strong><br>
+        Employee creates new sale, selects customer and warehouse
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box box-blue">
+        <strong>2. Product Selection</strong><br>
+        Add products to order by code, barcode, or search<br>
+        Specify quantity for each product
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box">
+        <strong>3. Stock Validation</strong><br>
+        System checks warehouse inventory<br>
+        Prevents overselling (quantity ≤ available stock)
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box box-blue">
+        <strong>4. Pricing Calculation</strong><br>
+        • Retrieve product prices<br>
+        • Apply promotional pricing if active<br>
+        • Calculate per-line totals<br>
+        • Apply line-item discounts
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box">
+        <strong>5. Tax Calculation</strong><br>
+        For each line: calculate tax based on product tax rate<br>
+        Sum all tax amounts for order total tax
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box box-blue">
+        <strong>6. Discount Application</strong><br>
+        Apply order-level discount (percentage or fixed amount)<br>
+        Recalculate grand total
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box">
+        <strong>7. Payment Processing</strong><br>
+        • Select payment method<br>
+        • Enter amount received<br>
+        • Calculate change due (if cash)<br>
+        • Update payment status
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box box-green">
+        <strong>8. Transaction Completion</strong><br>
+        • Save sale header and detail records<br>
+        • Decrease inventory quantities<br>
+        • Create payment record<br>
+        • Update customer balance<br>
+        • Update account balance<br>
+        • Generate reference number
+    </div>
+    <div class="arrow">↓</div>
+    
+    <div class="box box-green">
+        <strong>9. Documentation</strong><br>
+        Generate and print invoice/receipt
+    </div>
+</div>
+
+<h4>Quotation System</h4>
+
+<p>Quotations are preliminary sales documents created for potential customers. They contain all the details of a standard sale (products, quantities, prices, totals) but do not affect inventory or financial records until converted to actual sales.</p>
+
+<p>The quotation workflow serves businesses that prepare price estimates before finalizing transactions. Sales staff create quotations showing customers what products cost and what the total would be. If the customer accepts, the quotation can be converted to a sale with a single button click, eliminating the need to re-enter all product details.</p>
+
+<p>Quotations have validity periods. After creation, they can be marked as sent to customer, accepted, rejected, or expired. Only accepted quotations are typically converted to sales. This status tracking enables reporting on quotation-to-sale conversion rates.</p>
+
+<h4>Sales Return Processing</h4>
+
+<p>Returns handle situations where customers bring products back. The system links returns to their originating sales, enabling tracking of what was originally sold and what has been returned.</p>
+
+<p>To create a return, users locate the original sale record, then initiate a return against it. The system displays all products from the original sale with quantities originally purchased. Users select which products are being returned and specify return quantities (must be ≤ original quantity - previously returned quantity).</p>
+
+<p>Return reasons can be specified: defective product, wrong item shipped, customer changed mind, etc. This information drives quality control and supplier issue tracking.</p>
+
+<p>When a return is saved, the system increases inventory back to the warehouse, reduces the customer's debt (if the sale was on credit), and creates a refund record. The refund can be processed immediately (cash refund) or tracked as credit owed to customer for future purchases.</p>
+
+<h4>Payment Collection</h4>
+
+<p>Not all sales are paid in full at the time of transaction. The system supports partial payments and tracks outstanding balances.</p>
+
+<p>Each payment record links to its sale, specifies payment method, amount, date, and optional notes. Payments can be smaller than the sale total, enabling installment payment plans. The system calculates total payments received and determines whether the sale is paid, unpaid, or partially paid.</p>
+
+<p>Payment status affects reporting and financial analysis. Outstanding receivables reports show which customers owe money and how much. Payment collection reports track when payments were received and through which payment methods.</p>
+
+<div class="page-break"></div>
+
+<h3>5.5 Purchase Management Module</h3>
+
+<p>The purchase module manages inventory acquisition from suppliers, tracking orders, deliveries, and payment obligations.</p>
+
+<h4>Supplier Management</h4>
+
+<p>Supplier records store comprehensive information about vendors including company name, contact person, email, phone, physical address, tax identification number, and payment terms. This information appears on purchase orders and facilitates communication regarding deliveries and payments.</p>
+
+<p>The system tracks supplier performance metrics including total purchase value, number of orders placed, average order value, and payment history. This data supports supplier evaluation and purchasing decisions.</p>
+
+<h4>Purchase Order Creation and Processing</h4>
+
+<p>Purchase orders document inventory acquisitions. Like sales orders, they consist of header information and detail lines. Header fields include supplier, destination warehouse, order date, expected delivery date, payment terms, and status (pending, received, cancelled).</p>
+
+<p>Detail lines specify products, order quantities, unit costs, taxes, and line totals. The system calculates the purchase order total including product costs, taxes, and shipping charges, then subtracts any discounts negotiated with the supplier.</p>
+
+<p>When a purchase order status is set to "received," the system automatically increases inventory in the specified warehouse. This automatic update ensures inventory records remain synchronized with physical stock movements.</p>
+
+<h4>Purchase Return Handling</h4>
+
+<p>When received goods are defective or incorrect, purchase returns document products being sent back to suppliers. Returns link to original purchase orders, specify which products and quantities are being returned, and explain the return reason.</p>
+
+<p>Processing a purchase return decreases inventory (products leaving), increases the amount owed by the supplier (they need to credit the business), and creates a return document for shipping department use.</p>
+
+<h4>Purchase Payment Tracking</h4>
+
+<p>Purchase payments work identically to sales payments but in reverse—the business pays suppliers rather than receiving money from customers. Each payment reduces the amount owed to the supplier.</p>
+
+<p>Purchase orders can have three payment statuses: paid (full payment made), unpaid (no payment yet), or partial (some payment made but balance remains). Accurate payment tracking prevents duplicate payments and enables cash flow forecasting.</p>
+
+<div class="page-break"></div>
+
+<h3>5.6 Point of Sale (POS) Interface</h3>
+
+<p>The POS interface is a specialized screen optimized for rapid transaction processing during customer checkout. Unlike the full sales module designed for order processing, the POS interface minimizes clicks and simplifies the cashier workflow.</p>
+
+<h4>Interface Design Principles</h4>
+
+<p>POS interface design prioritizes efficiency. The entire transaction occurs on a single screen without navigation between pages. Product search, shopping cart, and payment processing are all visible simultaneously, enabling cashiers to complete transactions quickly even during busy periods.</p>
+
+<p>Large touch targets accommodate both mouse clicks and touchscreen devices. Product images display prominently for visual identification. Prices and totals use large fonts for readability from a distance. The color scheme uses high contrast for visibility under various lighting conditions.</p>
+
+<h4>Product Selection Methods</h4>
+
+<p>Cashiers can add products to transactions through multiple methods:</p>
+
+<p><strong>Barcode Scanning:</strong> The primary method for most retail environments. Cashiers scan product barcodes using handheld or mounted scanners. The scanner input is captured by a search field, triggering an automatic database query. If a match is found, the product is added to the cart instantly.</p>
+
+<p><strong>Product Code Entry:</strong> For products without barcodes or when scanners malfunction, cashiers can type product codes manually. An autocomplete feature suggests matching products as characters are typed.</p>
+
+<p><strong>Search by Name:</strong> Cashiers can search for products by entering partial names. The search field queries product names and displays matching results. Clicking a result adds it to the cart.</p>
+
+<p><strong>Category Browsing:</strong> The interface displays product categories. Clicking a category shows products within that category as a grid of product cards with images and prices. Clicking a product card adds it to the cart.</p>
+
+<h4>Transaction Processing Flow</h4>
+
+<p>A typical POS transaction follows this pattern:</p>
+
+<div class="diagram">
+    <p class="diagram-title">Figure 5.5: POS Transaction Steps</p>
+    
+    <div class="flow-step">
+        <span class="step-num">1</span>
+        Cashier opens POS interface (one click from main menu)
+    </div>
+    
+    <div class="flow-step">
+        <span class="step-num">2</span>
+        System displays with default warehouse and walk-in customer pre-selected
+    </div>
+    
+    <div class="flow-step highlight">
+        <span class="step-num">3</span>
+        Cashier scans first product barcode → Product appears in cart
+    </div>
+    
+    <div class="flow-step">
+        <span class="step-num">4</span>
+        Quantity defaults to 1; if customer buys multiple, click + button to increase
+    </div>
+    
+    <div class="flow-step highlight">
+        <span class="step-num">5</span>
+        Repeat scanning for each product in customer's basket
+    </div>
+    
+    <div class="flow-step">
+        <span class="step-num">6</span>
+        Total displays prominently, updating after each product added
+    </div>
+    
+    <div class="flow-step">
+        <span class="step-num">7</span>
+        If applicable: click discount button, enter discount percentage or amount
+    </div>
+    
+    <div class="flow-step highlight">
+        <span class="step-num">8</span>
+        Click payment method button (Cash, Card, etc.)
+    </div>
+    
+    <div class="flow-step">
+        <span class="step-num">9</span>
+        Enter amount received from customer
+    </div>
+    
+    <div class="flow-step">
+        <span class="step-num">10</span>
+        System calculates and displays change due
+    </div>
+    
+    <div class="flow-step highlight">
+        <span class="step-num">11</span>
+        Click "Complete Sale" button
+    </div>
+    
+    <div class="flow-step">
+        <span class="step-num">12</span>
+        System saves transaction, updates inventory, prints receipt
+    </div>
+    
+    <div class="flow-step">
+        <span class="step-num">13</span>
+        Cart clears automatically, ready for next customer
+    </div>
+</div>
+
+<h4>Cart Management</h4>
+
+<p>The shopping cart displays as a table showing product names, unit prices, quantities, and line totals. Cashiers can modify quantities using + and - buttons, or remove products entirely with an X button. The cart updates totals immediately when quantities change.</p>
+
+<p>For situations where a customer returns an item from a different transaction or exchanges products, the cart supports negative quantities, effectively processing returns within the POS interface.</p>
+
+<h4>Payment Processing</h4>
+
+<p>The payment section displays the grand total prominently. Below it are buttons for each configured payment method. Clicking a payment method button opens a payment dialog where cashiers enter the amount received.</p>
+
+<p>For cash payments, the system calculates change due. The change amount displays in large numbers so cashiers can quickly see how much to return to customers. For card payments, no change calculation is necessary.</p>
+
+<p>The system supports split payments where customers pay using multiple methods (part cash, part card). Cashiers record each payment separately, and the system tracks the total received until it equals or exceeds the sale total.</p>
+
+<h4>Receipt Generation</h4>
+
+<p>Upon completing a sale, the system generates a receipt document. Receipt layout is configured through POS settings, supporting various thermal printer paper sizes (58mm, 80mm). The receipt includes company name and logo, sale reference number, date and time, itemized product list with quantities and prices, tax breakdown, total amount, amount paid, change given, and a thank you message.</p>
+
+<p>Receipts can be printed automatically or on demand. In environments with thermal printers, automatic printing speeds transactions. In tablet-based POS systems, receipts might be emailed to customers instead of printed.</p>
+
+<div class="note-box">
+    <div class="note-title">Performance Optimization:</div>
+    The POS interface is designed for speed. Product searches are optimized with database indexes on barcode and product code fields. The interface uses Vue.js for reactive updates, avoiding full page reloads. All calculations (totals, tax, change) happen client-side in JavaScript, providing instant feedback without server round-trips.
+</div>
+
+<div class="page-break"></div>
+
+<h3>5.7 Accounting Module</h3>
+
+<p>The accounting module provides basic financial management capabilities, tracking money movement in and out of the business through various accounts and categorized transactions.</p>
+
+<h4>Account Structure</h4>
+
+<p>Financial accounts represent locations where money is held or processed. Common accounts include:</p>
+
+<ul>
+    <li><strong>Cash Register:</strong> Physical cash drawer at store location</li>
+    <li><strong>Bank Account:</strong> Business checking or savings account</li>
+    <li><strong>Credit Card Processor:</strong> Merchant account where card payments settle</li>
+    <li><strong>Mobile Payment:</strong> Digital payment services like PayPal or Square</li>
+</ul>
+
+<p>Each account tracks a current balance that increases with deposits and decreases with expenses or withdrawals. The system maintains an audit trail of all transactions affecting each account.</p>
+
+<h4>Income Tracking (Deposits)</h4>
+
+<p>Deposits represent money coming into the business. While sales generate most income, other sources include investor capital, loan proceeds, or asset sales. Each deposit specifies the amount, source account, category, date, and optional notes.</p>
+
+<p>Deposit categories enable analysis of income sources. Common categories include product sales, service revenue, interest income, or other income. Categorization supports financial reporting and tax preparation.</p>
+
+<h4>Expense Tracking</h4>
+
+<p>Expenses document money leaving the business for operational costs. Each expense record includes amount, account where money was withdrawn, category, date, and description.</p>
+
+<p>Expense categories typically mirror tax-deductible business expense types: rent, utilities, salaries, supplies, marketing, insurance, professional services, etc. Proper categorization simplifies tax filing and enables expense analysis for cost control.</p>
+
+<h4>Integration with Sales and Purchases</h4>
+
+<p>When sales or purchase payments are processed, the system automatically creates accounting entries. A cash sale creates a deposit in the cash register account. A credit card purchase creates an expense in the bank account (money paying supplier). This integration eliminates duplicate data entry and ensures accounting records match operational transactions.</p>
+
+<h3>5.8 Reporting System</h3>
+
+<p>The reporting module transforms operational data into business intelligence through various report types addressing different analytical needs.</p>
+
+<h4>Sales Reporting</h4>
+
+<p><strong>Sales Summary Report:</strong> Displays total sales by day, week, month, or custom date range. Shows number of transactions, total revenue, average transaction value, and tax collected. Managers use this report to assess sales performance and identify trends.</p>
+
+<p><strong>Sales Detail Report:</strong> Lists individual sales transactions with reference numbers, dates, customers, amounts, and payment status. Enables detailed review of specific transactions for audit or customer service purposes.</p>
+
+<p><strong>Sales by Product Report:</strong> Shows which products generated the most revenue. Displays product names, quantities sold, total revenue, and profit margin. Helps identify best-selling items and slow-moving inventory.</p>
+
+<p><strong>Sales by Customer Report:</strong> Ranks customers by total purchase value. Shows lifetime customer value, number of orders, average order size. Supports customer relationship management and identifies high-value customers deserving special attention.</p>
+
+<p><strong>Sales by Employee Report:</strong> When user tracking is enabled, shows sales processed by each employee. Helps evaluate employee performance and can support commission calculations.</p>
+
+<h4>Purchase Reporting</h4>
+
+<p><strong>Purchase Summary:</strong> Total purchase spending by period, number of orders, average order value.</p>
+
+<p><strong>Purchases by Supplier:</strong> Breakdown of spending with each supplier. Useful for supplier negotiation and identifying primary vendors.</p>
+
+<p><strong>Purchase Detail:</strong> Individual purchase order listing for audit and verification.</p>
+
+<h4>Inventory Reporting</h4>
+
+<p><strong>Stock Level Report:</strong> Current inventory quantities for all products across all warehouses. Shows product names, codes, units, quantities per location, and total quantity. Critical for preventing stockouts and planning purchases.</p>
+
+<p><strong>Low Stock Alert Report:</strong> Products below their minimum quantity thresholds. Provides immediate reorder priorities.</p>
+
+<p><strong>Stock Valuation Report:</strong> Calculates total inventory value by multiplying quantities by cost prices. Important for financial statements and insurance purposes.</p>
+
+<p><strong>Stock Movement Report:</strong> Tracks all transactions affecting specific products over a date range. Shows purchases received, sales made, transfers, and adjustments. Useful for identifying causes of inventory discrepancies.</p>
+
+<h4>Financial Reporting</h4>
+
+<p><strong>Profit & Loss Statement:</strong> Compares total revenue against total costs and expenses for a period. Shows gross profit (revenue minus cost of goods sold) and net profit (gross profit minus operating expenses). Fundamental report for assessing business profitability.</p>
+
+<p><strong>Payment Collection Report:</strong> Shows payments received from customers, broken down by payment method. Helps reconcile daily receipts against bank deposits.</p>
+
+<p><strong>Outstanding Receivables:</strong> Lists customers with unpaid or partially paid invoices, amounts owed, and how long overdue. Supports accounts receivable management and collection efforts.</p>
+
+<p><strong>Outstanding Payables:</strong> Shows suppliers awaiting payment with amounts owed and due dates. Helps manage cash flow and maintain good supplier relationships.</p>
+
+<h4>Report Features</h4>
+
+<p>All reports support date range filtering, allowing analysis of any time period. Reports can be exported to Excel format for further analysis or manipulation. PDF export enables professional presentation of reports for management review or stakeholder distribution. Graphical charts visualize trends where appropriate, making patterns easier to identify than in tables of numbers.</p>
+
+<div class="page-break"></div>
+
+## Due to length limitations, I need to continue in the next response. Shall I continue with the remaining sections (Database Architecture, Workflows, Security, Deployment, Features, Performance, Advantages/Limitations, Future Development, and Conclusion)?
+
+
